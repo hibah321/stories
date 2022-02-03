@@ -1,0 +1,81 @@
+
+:root{
+    --clr-primary: #313552;
+    --clr-secondary: hsl(44, 39%, 90%);
+    --clr-anchor: #d35675;
+
+}
+
+/* globals */
+
+
+body,html{
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--clr-secondary);
+}
+a{
+    text-decoration: none;
+}
+
+/* typography */
+h1{
+    font-size: 4rem;
+    color: var(--clr-secondary);
+    margin: 1.5rem 0;
+}
+
+/* nav bar */
+nav{
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    padding-inline: 4rem;
+    background-color: var(--clr-primary);
+    width: 100%;
+    border-bottom: solid 1px var(--clr-anchor);
+    box-shadow: 0px 6px 12px 0px rgba(0,0,0,0.21);
+-webkit-box-shadow: 0px 6px 12px 0px rgba(0,0,0,0.21);
+-moz-box-shadow: 0px 6px 12px 0px rgba(0,0,0,0.21);
+}
+.search-bar{
+    margin-left: auto;
+    margin-right: 2rem;
+    position: relative;
+    width: 400px;
+}
+.search-bar i{
+    position: absolute;
+    right: 20px;
+    top: 13px;
+    color: var(--clr-anchor);
+}
+nav input{
+    box-sizing: border-box;
+    width: 99%;
+    line-height: 2.25rem;
+    border-color: var(--clr-anchor);
+    border-style: solid;
+    border-radius: 25px;
+    margin-left: auto;
+    padding-left: 2rem;
+    font-weight: 500;
+    font-size: 1.15rem;
+}
+nav > a + a{
+    margin-left: 2rem;
+} 
+input:focus{
+    outline: none;
+}
+nav ::placeholder{
+    font-weight: 500;
+    font-size: 1.05rem;
+}
+nav a{
+    color: var(--clr-anchor);
+    font-weight: 900;
+    font-size: 1.25rem;
+}
+
