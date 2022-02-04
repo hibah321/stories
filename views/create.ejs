@@ -15,20 +15,24 @@
             <input type="text" name="title">
             <label for="snippet">Snippet</label>
             <input type="text" name="snippet">
-            <label for="body">Body</label>
             <div class="genre-field">
                 <label for="">Add genre</label>
                 <div class="dropdown">
+                    <p></p>
                     <button type="button" onclick="drop()" class="dropbtn">Pick genres <i class="fas fa-sort-down"></i></button>
-                    <div id="myDropdown" class="dropdown-content">
-                      <a href="#">Link 1</a>
-                      <a href="#">Link 2</a>
-                      <a href="#">Link 3</a>
+                    <div id="Dropdown" class="dropdown-content">
+                      <span data-genre="Action">Action</span>
+                      <span data-genre="Adventure">Adventure</span>
+                      <span data-genre="Comedy">Comedy</span>
+                      <span data-genre="Crime and Mystery">Crime and Mystery</span>
+                      <span data-genre="Fantasy">Fantasy</span>
+                      <span data-genre="Horror">Horror</span>
+                      <span data-genre="Romance">Romance</span>
                     </div>
                 </div>
             </div>
-            <p></p>
             
+            <label for="body">Body</label>
             <textarea name="body" id="" cols="30" rows="30"></textarea>
             <button type="submit">Submit</button>
         </form>
@@ -36,7 +40,7 @@
     <script>
                 
         function drop() {
-            document.getElementById("myDropdown").classList.toggle("show");
+            document.getElementById("Dropdown").classList.toggle("show");
         }
 
         
