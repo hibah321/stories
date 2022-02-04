@@ -20,13 +20,16 @@ a{
 }
 
 /* typography */
+
 h1{
     font-size: 4rem;
     color: var(--clr-secondary);
     margin: 1.5rem 0;
 }
 
-/* nav bar */
+ /*nav bar */
+
+
 nav{
     box-sizing: border-box;
     display: flex;
@@ -78,4 +81,5 @@ nav a{
     font-weight: 900;
     font-size: 1.25rem;
 }
+
 

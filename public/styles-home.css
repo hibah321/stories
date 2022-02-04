@@ -1,0 +1,10 @@
+:root{
+    --clr-primary: #313552;
+    --clr-secondary: hsl(44, 39%, 90%);
+    --clr-anchor: #d35675;
+}
+
+.container{
+    width: 90%;
+    display: flex;
+}
