@@ -1,6 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-
 
 <%- include('./partials/head.ejs') %> 
 
@@ -13,21 +10,23 @@
         <form action="/" method="POST">
             <label for="title">Title</label>
             <input type="text" name="title">
-            <label for="snippet">Snippet</label>
+            <label id="a" for="snippet">Snippet</label>
             <input type="text" name="snippet">
             <div class="genre-field">
                 <label for="">Add genre</label>
                 <div class="dropdown">
-                    <p></p>
-                    <button type="button" onclick="drop()" class="dropbtn">Pick genres <i class="fas fa-sort-down"></i></button>
-                    <div id="Dropdown" class="dropdown-content">
-                      <span data-genre="Action">Action</span>
-                      <span data-genre="Adventure">Adventure</span>
-                      <span data-genre="Comedy">Comedy</span>
-                      <span data-genre="Crime and Mystery">Crime and Mystery</span>
-                      <span data-genre="Fantasy">Fantasy</span>
-                      <span data-genre="Horror">Horror</span>
-                      <span data-genre="Romance">Romance</span>
+                    <div id="genre_list"></div>
+                    <div>
+                        <button type="button" id ="drop" class="dropbtn">Pick genres <i class="fas fa-sort-down"></i></button>
+                        <div id="Dropdown" class="dropdown-content">
+                          <span class="genre" data-genre="Action">Action</span>
+                          <span class="genre" data-genre="Adventure">Adventure</span>
+                          <span class="genre" data-genre="Comedy">Comedy</span>
+                          <span class="genre" data-genre="Crime and Mystery">Crime and Mystery</span>
+                          <span class="genre" data-genre="Fantasy">Fantasy</span>
+                          <span class="genre" data-genre="Horror">Horror</span>
+                          <span class="genre" data-genre="Romance">Romance</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -38,12 +37,18 @@
         </form>
     </div>
     <script>
-                
-        function drop() {
-            document.getElementById("Dropdown").classList.toggle("show");
-        }
-
+        window.onload = () => {
+        const genre = document.querySelectorAll(".genre");
+        const selectedGenre = [];
+        let flag = false;
+        let all_genres = document.querySelectorAll(".all-genres");
         
+        
+        const drop = document.getElementById("drop");
+        drop.addEventListener('click', () => {
+            document.getElementById("Dropdown").classList.toggle("show");
+        })
+
         window.onclick = (event) => {
             if (!event.target.matches('.dropbtn')) {
                 var dropdowns = document.getElementsByClassName("dropdown-content");
@@ -56,6 +61,58 @@
                 }
             }
         }
+
+        //  event listener to select items in genres
+
+        genre.forEach((item) => {
+            item.addEventListener('click', () => {
+
+                const selected = item.getAttribute("data-genre")
+                selectedGenre.forEach((e) => {
+                    if (e === selected) {
+                        flag = true;
+                    }
+                })
+                if (!flag)
+                {
+                    const span = document.createElement("span");
+                    span.className = `all-genres `
+                    span.setAttribute("data-genre", selected)
+                    span.innerHTML = `${selected} <i class="far fa-times-circle"></i></span>`;
+                    document.getElementById("genre_list").appendChild(span);
+                    selectedGenre.push(selected);    
+                }  
+                flag = false 
+                all_genres = document.querySelectorAll(".all-genres")
+
+                //  event listener to delete items in genres
+
+
+                all_genres.forEach((item) => {
+                    item.addEventListener('click', () => {
+                        const deleted_item = item.getAttribute("data-genre");
+                        selectedGenre.forEach((e) => {
+                            if (e === deleted_item) {
+                                let index = selectedGenre.indexOf(e);
+                                selectedGenre.splice(index, 1);
+                            }
+
+                        })
+                        item.remove();
+                    })
+
+                })   
+            })
+
+            
+            })
+        }    
+        
+        
+        
+        
+        
+
     </script>
 </body>
 </html>

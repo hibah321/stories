@@ -56,7 +56,7 @@ button:hover, button:focus{
     background-color: hsl(346, 55%, 36%);
 }
 input:nth-of-type(2){
-    margin-bottom: 1rem;
+    margin-bottom: 1.75rem;
 }
 
 /* genre dropdown */
@@ -112,3 +112,18 @@ input:nth-of-type(2){
   
  
 .show {display:block;}
+
+
+.dropdown{
+    display: flex;
+}
+.all-genres {
+    background-color: #d35675;
+    color: white;
+    padding: 0.5rem;
+    margin: 0.5rem;
+    display: inline-block;
+    cursor: pointer;
+    font-size: 0.95rem;
+    border-radius: 25px;
+}
