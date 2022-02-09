@@ -14,10 +14,10 @@ const storySchema = new Schema({
         type: String,
         required: true
     },
-    genre: {
+    genres: [{
         type: String,
         required: true
-    } 
+    }]
 }, {timestamps: true});
 
 const story = mongoose.model('story', storySchema);

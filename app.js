@@ -34,3 +34,20 @@ app.get("/" , (req, res) => {
 app.get("/create", (req,res) => {
     res.render("create", {title: "Create", style: "/styles-create.css"})
 })
+
+app.get("/add", (req, res) => {
+    const st = new Story({
+        title: "Stability is the kel",
+        snippet: "bara bara dummmm",
+        genres: ["Action", "Adventure"],
+        body: "lorem lore fafdf"
+    });
+    
+    st.save()
+        .then(() => {
+            console.log('mission accomplished')
+            res.redirect("/");
+        }) 
+        .catch((err) => console.log(err))
+   
+})

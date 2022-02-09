@@ -7,19 +7,39 @@
     
     <%- include('./partials/nav.ejs')  %> 
 
+    <h2>All Stories</h2>
+    <form id="form" role="search" class="search-bar">
+        <input id="query" type="search" aria-label="Search through site content" placeholder="Search for blogs">
+        <i class="fas fa-search"></i>
+    </form>
     <div class="container">
+        
         
         <% if (stories.length > 0) { %>
             <% stories.forEach((story) => { %>
       
-              <h3><%= story.title %></h3>
-              <p ><%= story.snippet %></p>
+              <a href="">
+                  <div class="story">
+                      <h3><%= story.title %></h3>
+                      <p><%= story.snippet %></p>
+                      <div>
+                          <% story.genres.forEach((item) => { %>
+                             <span><%= item %> </span>
+                          <% })%>
+                      </div>
+                  </div>
+              </a>
       
             <% }) %>
         <% } else { %>
             <p>There are no blogs to display...</p>
         <% } %>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+        const f = document.getElementById('form');
+        const q = document.getElementById('query');
+        const google = 'https://www.google.com/search?q=site%3A+';
+        const site = 'http://localhost:3000/';
+    </script>
 </body>
 </html>
