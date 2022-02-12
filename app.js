@@ -20,14 +20,43 @@ app.set('view engine', 'ejs');
 
 
 app.use(express.static('public'));
+app.use(express.urlencoded({extended: true}));
 
 // route to the home page
 
 app.get("/" , (req, res) => {
-    Story.find()
+    Story.find().sort({createdAt: -1})
         .then((result) => res.render('home', {title: "Home", stories: result, style: "/styles-home.css"}))
-        .catch((err) => console.log("papappaa barraiii", err))
+        .catch((err) => console.log(err))
 });
+
+app.post("/", (req,res) => {
+
+    const story = new Story({
+        title: req.body.title,
+        snippet: req.body.snippet,
+        body: req.body.body
+    });
+
+    story.save()
+        .then(() => {
+            res.redirect("/");
+        }) 
+        .catch((err) => console.log(err))
+})
+
+
+//  route to each stories unique page
+
+app.get('/:id', (req,res) =>{
+    Story.find({title: id})
+        .then((result) => {
+            res.render("story", {title: id, story: result, style: "/styles-story.css"})
+        })
+        .catch((err) => {
+            console.log(err);
+        })
+})
 
 // route to the create page
 
@@ -35,19 +64,6 @@ app.get("/create", (req,res) => {
     res.render("create", {title: "Create", style: "/styles-create.css"})
 })
 
-app.get("/add", (req, res) => {
-    const st = new Story({
-        title: "Stability is the kel",
-        snippet: "bara bara dummmm",
-        genres: ["Action", "Adventure"],
-        body: "lorem lore fafdf"
-    });
-    
-    st.save()
-        .then(() => {
-            console.log('mission accomplished')
-            res.redirect("/");
-        }) 
-        .catch((err) => console.log(err))
-   
-})
+
+
+

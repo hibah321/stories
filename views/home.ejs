@@ -9,37 +9,59 @@
 
     <h2>All Stories</h2>
     <form id="form" role="search" class="search-bar">
-        <input id="query" type="search" aria-label="Search through site content" placeholder="Search for blogs">
-        <i class="fas fa-search"></i>
+        <input id="searchInput" type="search" aria-label="Search through site content" placeholder="Search for blogs">
+        <button id="sub-btn" ><i class="fas fa-search fa-lg"></i></button>
     </form>
     <div class="container">
-        
-        
+   
         <% if (stories.length > 0) { %>
             <% stories.forEach((story) => { %>
       
-              <a href="">
+              <a href="/<%= story.title %>">
                   <div class="story">
-                      <h3><%= story.title %></h3>
+                      <h3 class="titles"><%= story.title %></h3>
                       <p><%= story.snippet %></p>
-                      <div>
-                          <% story.genres.forEach((item) => { %>
-                             <span><%= item %> </span>
-                          <% })%>
-                      </div>
                   </div>
               </a>
       
             <% }) %>
         <% } else { %>
-            <p>There are no blogs to display...</p>
+            <p>There are no stories to display...</p>
         <% } %>
     </div>
     <script>
         const f = document.getElementById('form');
-        const q = document.getElementById('query');
-        const google = 'https://www.google.com/search?q=site%3A+';
-        const site = 'http://localhost:3000/';
+        const searchInput = document.getElementById('searchInput')
+        const titles = document.querySelectorAll('.titles')
+        const submit_btn = document.getElementById("sub-btn");
+
+        const search = (searched) => {
+            console.log(searched);
+            titles.forEach((title) => {
+                if (title.innerHTML.toLowerCase() != searched){
+                    console.log(title.innerHTML);
+                    title.parentElement.parentElement.style.display = "none";
+                }
+                
+            })
+        }
+        searchInput.addEventListener("input", (e) => {
+            const searched = e.target.value.toLowerCase()
+            titles.forEach((title) => {
+                const visible = title.textContent.toLowerCase().includes(searched)
+                title.parentElement.parentElement.classList.toggle('hide', !visible);
+            })
+
+        })
+
+        searchInput.addEventListener('keyup', () => {
+            if (e.key === 'Enter' || e.keyCode === 13) searchInput = '';
+        })
+        submit_btn.addEventListener('click', () => {
+            searchInput = '';
+        })
+        
+        
     </script>
 </body>
 </html>

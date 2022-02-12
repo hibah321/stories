@@ -14,10 +14,6 @@ const storySchema = new Schema({
         type: String,
         required: true
     },
-    genres: [{
-        type: String,
-        required: true
-    }]
 }, {timestamps: true});
 
 const story = mongoose.model('story', storySchema);

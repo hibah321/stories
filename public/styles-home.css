@@ -12,25 +12,33 @@
     margin-inline: auto;
     position: relative;
     width: max(300px, 50%);
-
+    margin-bottom: 2rem;
 }
 .search-bar input{
     box-sizing: border-box;
     width: 99%;
-    line-height: 2.25rem;
+    line-height: 2.5rem;
     border-color: var(--clr-anchor);
     border-style: solid;
     border-radius: 25px;
+    border-width: 3px;
     margin-left: auto;
     padding-left: 2rem;
     font-weight: 500;
     font-size: 1.15rem;
 }
 .search-bar i{
+    color: var(--clr-anchor);
+}
+.search-bar button{
     position: absolute;
     right: 20px;
-    top: 13px;
-    color: var(--clr-anchor);
+    top: 15px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    
 }
 
 h2{
@@ -58,9 +66,9 @@ h2{
     width: min(400px, 80vw);
     margin-top: 2rem;
     margin-bottom: 1rem;
-    border: solid 2px var(--clr-anchor);
-    -webkit-box-shadow: 0px 0px 19px 5px rgba(0,0,0,0.18); 
-    box-shadow: 0px 0px 19px 5px rgba(0,0,0,0.18);
+    border: solid 2px var(--clr-primary);
+    -webkit-box-shadow: 0px 0px 19px 5px rgba(0,0,0,0.1); 
+    box-shadow: 0px 0px 19px 5px rgba(0,0,0,0.1);
 }
 
 .story > * {
@@ -75,4 +83,15 @@ h2{
 .story p{
     font-size: 1.25rem;
     color: var(--clr-primary);
+}
+
+/* hiding items not searched */
+
+.hide{
+    display: none;
+}
+
+.titles{
+    cursor: text;
+
 }
