@@ -1,0 +1,46 @@
+:root{
+    --clr-primary: #313552;
+    --clr-secondary: hsl(44, 39%, 90%);
+    --clr-anchor: #d35675;
+}
+
+
+.container{
+    width: 90%;
+    background-color: white;
+    margin-inline: auto;
+    padding: 4rem;
+    box-sizing: border-box;
+    margin-top: 3rem;
+}
+
+
+/* typography */
+
+
+.title-card{
+    margin-inline: auto;
+    width: 100%;
+    margin-bottom: 4rem;
+}
+h2{
+    font-size: 3.5rem;
+    text-align: center;
+    color: var(--clr-primary) !important;
+    font-weight: 700;
+    margin: 0;
+}
+
+span{
+    display: block;
+    font-size: 1.15rem;
+    font-weight: 300;
+    width: 100%;
+    text-align: center;
+    font-style: italic;
+}
+p{
+    color: black;
+    font-size: 1.5rem;
+    font-weight: 300;
+}

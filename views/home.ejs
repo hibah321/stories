@@ -16,8 +16,8 @@
    
         <% if (stories.length > 0) { %>
             <% stories.forEach((story) => { %>
-      
-              <a href="/<%= story.title %>">
+               
+              <a href="/stories/<%= story.slug %>">
                   <div class="story">
                       <h3 class="titles"><%= story.title %></h3>
                       <p><%= story.snippet %></p>
@@ -60,7 +60,6 @@
         submit_btn.addEventListener('click', () => {
             searchInput = '';
         })
-        
         
     </script>
 </body>

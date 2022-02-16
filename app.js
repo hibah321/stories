@@ -4,6 +4,7 @@ const mongoURL = "mongodb+srv://hibah:Dunkkin321!@stories.kgu5k.mongodb.net/myFi
 const Story = require('./models/blog.js')
 
 
+
 // setting up express app
 
 const app = express()
@@ -26,7 +27,9 @@ app.use(express.urlencoded({extended: true}));
 
 app.get("/" , (req, res) => {
     Story.find().sort({createdAt: -1})
-        .then((result) => res.render('home', {title: "Home", stories: result, style: "/styles-home.css"}))
+        .then((result) => {
+                res.render('home', {title: "Home", stories: result, style: "/styles-home.css"})
+            })
         .catch((err) => console.log(err))
 });
 
@@ -38,6 +41,7 @@ app.post("/", (req,res) => {
         body: req.body.body
     });
 
+
     story.save()
         .then(() => {
             res.redirect("/");
@@ -48,14 +52,16 @@ app.post("/", (req,res) => {
 
 //  route to each stories unique page
 
-app.get('/:id', (req,res) =>{
-    Story.find({title: id})
-        .then((result) => {
-            res.render("story", {title: id, story: result, style: "/styles-story.css"})
+app.get('/stories/:slug', (req,res) =>{
+    Story.findOne({slug: req.params.slug})
+        .then((result) => { 
+            console.log('af', result);
+            res.render('story', {title: result.title, style: "/styles-story.css", story: result})
         })
         .catch((err) => {
             console.log(err);
         })
+        
 })
 
 // route to the create page
