@@ -2,6 +2,7 @@
     --clr-primary: #313552;
     --clr-secondary: hsl(44, 39%, 90%);
     --clr-anchor: #d35675;
+    --clr-primary-light:#313552; 
 }
 
 
@@ -64,9 +65,10 @@ h2{
     padding: 2rem;
     box-sizing: border-box;
     width: min(400px, 80vw);
+    min-height: 250px;
     margin-top: 2rem;
     margin-bottom: 1rem;
-    border: solid 2px var(--clr-primary);
+    border: solid 1px var(--clr-primary-light);
     -webkit-box-shadow: 0px 0px 19px 5px rgba(0,0,0,0.1); 
     box-shadow: 0px 0px 19px 5px rgba(0,0,0,0.1);
 }
