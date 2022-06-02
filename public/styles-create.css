@@ -53,6 +53,7 @@ button{
     border: none;
     margin-inline: auto;
     cursor: pointer;
+    transition: 100ms;
 }
 button:hover, button:focus{
     background-color: hsl(346, 55%, 36%);

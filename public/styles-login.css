@@ -1,0 +1,25 @@
+:root{
+    --clr-primary: #313552;
+    --clr-secondary: hsl(44, 39%, 90%);
+    --clr-anchor: #d35675;
+}
+
+
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.container h1{
+    color: var(--clr-primary);
+    font-size: 2rem;
+}
+.container a{
+    background-color: #de5246;
+    color: white;
+    padding: 1rem 1.5rem;
+    font-size: 1.25rem;
+}

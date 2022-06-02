@@ -22,6 +22,10 @@ const storySchema = new Schema({
         type: String,
         slug: "title",
         unique: true
+    },
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
     }
 }, {timestamps: true});
 

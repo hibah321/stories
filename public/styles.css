@@ -63,4 +63,14 @@ nav a:nth-of-type(1){
     margin-left: auto;
 }
 
+.login-google{
+    color: white;
+    background-color: var(--clr-anchor);
+    padding: 1.5rem;
+    transition: 100ms;
+}
+.login-google:hover, .login-google:focus{
+    background-color: hsl(346, 55%, 36%);
+}
+
 

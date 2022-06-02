@@ -1,5 +1,17 @@
 const router = require('express').Router();
-const Story = require('../models/blog.js')
+const req = require('express/lib/request');
+const Story = require('../models/blog.js');
+
+//  Authentication check middleware
+
+const authCheck = (req, res, next) => {
+    if (!req.user){
+        res.redirect('/auth/login')
+    }
+    else{
+        next()
+    }
+}
 
 router.get("/" , (req, res) => {
     Story.find().sort({createdAt: -1})
@@ -38,12 +50,17 @@ router.get('/stories/:slug', (req,res) =>{
             console.log(err);
         })
         
-})
+});
 
 // route to the create page
 
-router.get("/create", (req,res) => {
+router.get("/create", authCheck, (req,res) => {
     res.render("create", {title: "Create", style: "/styles-create.css"})
+})
+
+// route to profile page
+router.get("/profile", authCheck, (req,res) => {
+    res.render("profile", {title: "Profile", style: "/styles-create.css", user: req.user})
 })
 
 module.exports = router
