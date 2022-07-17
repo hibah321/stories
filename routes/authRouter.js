@@ -10,7 +10,7 @@ router.get('/google', passport.authenticate('google', {
 }));
 
 router.get('/google/redirect', passport.authenticate('google'), (req, res) => {
-    res.redirect('/create');
+    res.redirect('/profile');
 })
 
 // Log out

@@ -16,7 +16,7 @@ const authCheck = (req, res, next) => {
 router.get("/" , (req, res) => {
     Story.find().sort({createdAt: -1})
         .then((result) => {
-                res.render('home', {title: "Home", stories: result, style: "/styles-home.css"})
+                res.render('home', {title: "Home", stories: result, style: "/styles-home.css", user: req.user})
             })
         .catch((err) => console.log(err))
 });
@@ -44,7 +44,7 @@ router.get('/stories/:slug', (req,res) =>{
     Story.findOne({slug: req.params.slug})
         .then((result) => { 
             console.log('af', result);
-            res.render('story', {title: result.title, style: "/styles-story.css", story: result})
+            res.render('story', {title: result.title, style: "/styles-story.css", story: result, user: req.user })
         })
         .catch((err) => {
             console.log(err);
@@ -55,10 +55,11 @@ router.get('/stories/:slug', (req,res) =>{
 // route to the create page
 
 router.get("/create", authCheck, (req,res) => {
-    res.render("create", {title: "Create", style: "/styles-create.css"})
+    res.render("create", {title: "Create", style: "/styles-create.css", user: req.user})
 })
 
 // route to profile page
+
 router.get("/profile", authCheck, (req,res) => {
     res.render("profile", {title: "Profile", style: "/styles-create.css", user: req.user})
 })
