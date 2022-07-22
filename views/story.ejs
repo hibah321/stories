@@ -3,7 +3,7 @@
 
 
 <body>
-    <%- include('./partials/nav.ejs')  %> 
+    <%- include('./partials/nav.ejs', {user: user})  %> 
     <div class="container">
         <div class="title-card">
             <h2><%= story.title %></h2>

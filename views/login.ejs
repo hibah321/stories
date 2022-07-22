@@ -2,7 +2,7 @@
 
 
 <body>
-    <%- include('./partials/nav.ejs')  %>
+    <%- include('./partials/nav.ejs', {user: user})  %>
     <div class="container">
         <h1>To access this page you need to login first</h1>
         <a href="/auth/google">Google+</a>

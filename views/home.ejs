@@ -5,7 +5,7 @@
 
 <body>
     
-    <%- include('./partials/nav.ejs')  %> 
+    <%- include('./partials/nav.ejs', {user: user})  %> 
 
     <h2>All Stories</h2>
     <form id="form" role="search" class="search-bar">
@@ -60,7 +60,7 @@
         submit_btn.addEventListener('click', () => {
             searchInput = '';
         })
-        
+
     </script>
 </body>
 </html>

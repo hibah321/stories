@@ -6,6 +6,7 @@ const router = require('./routes/storiesRouter')
 const authRouter = require('./routes/authRouter')
 const cookieSession = require('cookie-session')
 const passport = require('passport')
+const helmet = require("helmet");
 
 
 
@@ -27,6 +28,13 @@ app.set('view engine', 'ejs');
 
 app.use(express.static('public'));
 app.use(express.urlencoded({extended: true}));
+app.use(
+  helmet({
+    contentSecurityPolicy: false,
+  })
+);
+
+
 
 // intialize session cookie
 

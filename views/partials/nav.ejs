@@ -2,9 +2,9 @@
     <h1>Blogadon</h1>  
     <a href="/">Home</a>
     <a href="/create">Create</a>
-    <% if (user) { %>
-        <a href="/auth/logout">Log out</a>
-    <% } else { %> 
-        <a href="/auth/google" class="login-google">Log in with Google</a> 
+    <% if (user) { %> 
+        <a href="/auth/logout">Log out</a>     
+    <% } else { %>
+        <a href="/auth/google" class="login-google">Log in with Google</a>
     <% } %>     
 </nav>
