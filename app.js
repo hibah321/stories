@@ -4,7 +4,7 @@ const keys = require('./config/keys.js')
 const passportSetup = require('./config/passport-setup.js')
 const router = require('./routes/storiesRouter')
 const authRouter = require('./routes/authRouter')
-const cookieSession = require('cookie-session')
+const session = require('express-session');
 const passport = require('passport')
 const helmet = require("helmet");
 
@@ -38,10 +38,12 @@ app.use(
 
 // intialize session cookie
 
-app.use(cookieSession({
-    maxAge: 24*60*60*1000,
-    keys: keys.session.key
-}))
+app.use(session({ 		//Usuage
+  secret: [keys.session.key],
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: true }
+}));
 
 // intialize passport
 
@@ -51,7 +53,7 @@ app.use(passport.session());
 // routes 
 
 app.use("/", router)
-app.use("/auth", authRouter)
+app.use("/auth/", authRouter)
 
 
 

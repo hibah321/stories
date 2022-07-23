@@ -22,13 +22,13 @@ passport.use(
         User.findOne({googleID: profile.id})
             .then((currentUser) => {
                 if(currentUser){
+                    console.log('user is ', currentUser)
                     done(null, currentUser)
                 }
                 else{
                     const currentUser = new User({
                         googleID: profile.id,
                         username: profile.displayName,
-                        image: profile.photos[0].value
                     })
                     currentUser.save()
                         .then(console.log('user added successfully'))

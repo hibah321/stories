@@ -10,8 +10,7 @@ router.get('/google', passport.authenticate('google', {
 }));
 
 router.get('/google/redirect', passport.authenticate('google'), (req, res) => {
-    console.log('redirecting');
-    res.redirect('/profile');
+    res.redirect('/create');
 
 })
 
@@ -21,8 +20,8 @@ router.get('/logout', (req, res) => {
     res.clearCookie('sid', {path: '/'});
     res.redirect('/');
 })
-router.get('/login', (req, res) => {
-    console.log('redirecting');
+router.get('/loggin', (req, res) => {
+    console.log('redirecting cha');
     res.render('login', { title: 'login',  style: "/styles-login.css", user: req.user})
 })
 

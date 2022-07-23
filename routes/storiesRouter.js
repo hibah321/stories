@@ -6,7 +6,7 @@ const Story = require('../models/blog.js');
 
 const authCheck = (req, res, next) => {
     if (!req.user){
-        res.redirect('/auth/login')
+        res.redirect('/auth/profile')
     }
     else{
         next()
