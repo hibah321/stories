@@ -16,9 +16,16 @@ router.get('/google/redirect', passport.authenticate('google'), (req, res) => {
 
 // Log out
 router.get('/logout', (req, res) => {
-    req.logout();
-    res.clearCookie('sid', {path: '/'});
-    res.redirect('/');
+    req.logout((err) => {
+        if (err) {
+            console.log('err');
+        }
+        else{
+            res.clearCookie('sid', {path: '/'});
+            res.redirect('/');
+        }
+    });
+
 })
 router.get('/loggin', (req, res) => {
     console.log('redirecting cha');

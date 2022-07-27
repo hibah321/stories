@@ -10,6 +10,7 @@ const helmet = require("helmet");
 
 
 
+
 // setting up express app
 
 const app = express()
@@ -42,7 +43,6 @@ app.use(session({ 		//Usuage
   secret: [keys.session.key],
   resave: false,
   saveUninitialized: true,
-  cookie: { secure: true }
 }));
 
 // intialize passport

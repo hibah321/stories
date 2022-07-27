@@ -5,8 +5,9 @@ const Story = require('../models/blog.js');
 //  Authentication check middleware
 
 const authCheck = (req, res, next) => {
-    if (!req.user){
-        res.redirect('/auth/profile')
+    console.log(req.user);
+    if (!(req.user)){
+        res.redirect('/auth/login')
     }
     else{
         next()
@@ -26,7 +27,8 @@ router.post("/", (req,res) => {
     const story = new Story({
         title: req.body.title,
         snippet: req.body.snippet,
-        body: req.body.body
+        body: req.body.body,
+        user: req.user
     });
 
 
