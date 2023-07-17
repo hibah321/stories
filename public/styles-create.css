@@ -130,3 +130,9 @@ input:nth-of-type(2){
     font-size: 0.95rem;
     border-radius: 25px;
 }
+
+@media only screen and (max-width: 767px) {
+    .container{
+        width: 100%;
+    }
+}

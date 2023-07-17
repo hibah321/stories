@@ -1,7 +1,34 @@
-<%- include('./partials/head.ejs') %> 
+<%- include('./partials/head.ejs') %>
 
 
-<body>
-    <%- include('./partials/nav.ejs', {user: user})  %>
-    
-</body>
+    <body>
+        <%- include('./partials/nav.ejs', {user: user}) %>
+            <h2>Your Stories</h2>
+            <div class="container">
+                <% if (stories.length> 0) { %>
+                    <% stories.forEach((story)=> { %>
+
+                        <a href="/stories/<%= story.slug %>">
+                            <div class="story">
+                                <form action="/profile/delete/<%= story._id %>" method="POST">
+                                    <button type="submit" class="fa-solid fa-trash" style="color: #d35675;"></button>
+                                </form>
+                                <div>
+                                    <h3 class="titles">
+                                        <%= story.title %>
+                                    </h3>
+
+                                </div>
+                                <p>
+                                    <%= story.snippet %>
+                                </p>
+                            </div>
+                        </a>
+
+                        <% }) %>
+                            <% } else { %>
+                                <p>There are no stories to display...</p>
+                                <% } %>
+            </div>
+            <script src="https://kit.fontawesome.com/050f2e90e9.js" crossorigin="anonymous"></script>
+    </body>

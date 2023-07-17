@@ -15,6 +15,27 @@ const helmet = require("helmet");
 
 const app = express()
 
+app.use(express.static('public'));
+app.use(express.urlencoded({extended: false}));
+
+// intialize session cookie
+
+app.use(session({ 		//Usuage
+  secret: [keys.session.key],
+  resave: false,
+  saveUninitialized: false,
+  rolling: true,
+  cookie: {
+    secure: false,
+    maxAge: (60 * 60 * 1000)
+  }
+}));
+
+// intialize passport
+
+app.use(passport.initialize());
+app.use(passport.session());
+
 //  setting up the databases and listening to the server
 
 mongoose.connect(keys.mongodb.dbURI, {useNewUrlParser: true , useUnifiedTopology: true})
@@ -23,32 +44,6 @@ mongoose.connect(keys.mongodb.dbURI, {useNewUrlParser: true , useUnifiedTopology
 
 
 app.set('view engine', 'ejs');
-
-
-// Middleware 
-
-app.use(express.static('public'));
-app.use(express.urlencoded({extended: true}));
-app.use(
-  helmet({
-    contentSecurityPolicy: false,
-  })
-);
-
-
-
-// intialize session cookie
-
-app.use(session({ 		//Usuage
-  secret: [keys.session.key],
-  resave: false,
-  saveUninitialized: true,
-}));
-
-// intialize passport
-
-app.use(passport.initialize());
-app.use(passport.session());
 
 // routes 
 

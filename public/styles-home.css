@@ -42,19 +42,14 @@
     
 }
 
-h2{
-    color: var(--clr-primary);
-    font-size: 2.75rem;
-    text-align: center;
-    font-weight: 900;
-}
 
 .container{
     width: 100%;
     display: flex;
+    gap: 2rem;
     flex-wrap: wrap;
-    justify-content: space-around;
-
+    align-items: center;
+    justify-content: center;
 }
 
 
@@ -62,6 +57,7 @@ h2{
 
 .story{
     background-color: white;
+    position: relative;
     padding: 2rem;
     box-sizing: border-box;
     width: min(400px, 80vw);
@@ -69,13 +65,14 @@ h2{
     margin-top: 2rem;
     margin-bottom: 1rem;
     border: solid 1px var(--clr-primary-light);
+    border-top: solid 5px var(--clr-anchor);
     -webkit-box-shadow: 0px 0px 19px 5px rgba(0,0,0,0.1); 
     box-shadow: 0px 0px 19px 5px rgba(0,0,0,0.1);
 }
 
 .story > * {
     display: block;
-    
+
 }
 .story h3{
     font-size: 2rem;
@@ -84,9 +81,22 @@ h2{
 }
 .story p{
     font-size: 1.25rem;
+    font-weight: 200;
     color: var(--clr-primary);
+    font-family: Arial, Helvetica, sans-serif;
+    text-justify: inter-word;
 }
 
+.story button{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 4;
+    background-color: transparent;
+    cursor: pointer;
+    border: none;
+
+}
 /* hiding items not searched */
 
 .hide{

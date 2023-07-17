@@ -1,10 +1,38 @@
 <nav>
-    <h1>Blogadon</h1>  
+  <div id="menuToggle">
+
+    <input type="checkbox" />
+    <span></span>
+    <span></span>
+    <span></span>
+
+    <ul id="menu">
+      <a href="/">
+        <li>Home</li>
+      </a>
+      <a href="/create">
+        <li>Create</li>
+      </a>
+      <a href="/profile">
+        <li>Profile</li>
+      </a>
+      <% if (user) { %>
+        <a href="/auth/logout"><li>Log out</li></a>
+        <% } else { %>
+          <a href="/auth/google"><li>Log in with Google</li></a>
+          <% } %>
+    </ul>
+  </div>
+  <h1>SoloTales</h1>
+  <div class="menu">
     <a href="/">Home</a>
     <a href="/create">Create</a>
-    <% if (user) { %> 
-        <a href="/auth/logout">Log out</a>     
-    <% } else { %>
+    <a href="/profile">Profile</a>
+    <% if (user) { %>
+      <a href="/auth/logout">Log out</a>
+      <% } else { %>
         <a href="/auth/google" class="login-google">Log in with Google</a>
-    <% } %>     
+        <% } %>
+  </div>
+
 </nav>

@@ -6,7 +6,7 @@ const userSchema = new Schema({
         type: String,
     },
     googleId: {
-        typre: String,
+        type: String,
     },
     image: {
         type: String,

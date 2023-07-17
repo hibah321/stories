@@ -22,7 +22,7 @@ passport.use(
         User.findOne({googleID: profile.id})
             .then((currentUser) => {
                 if(currentUser){
-                    console.log('user is ', currentUser)
+                    console.log('user found');
                     done(null, currentUser)
                 }
                 else{
